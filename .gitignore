@@ -16,9 +16,7 @@ backend/.env
 frontend/.env
 *.env
 
-# Allow example configs
-!.env.example
-!backend/.env.example
+
 
 # ── Build Outputs ─────────────────────────
 dist/
