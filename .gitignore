@@ -1,0 +1,69 @@
+# ==========================================
+# Master .gitignore for SmartLab Management
+# ==========================================
+
+# ── Dependencies ──────────────────────────
+node_modules/
+frontend/node_modules/
+vendor/
+
+# ── Environment & Secrets ─────────────────
+# NEVER commit real .env files with passwords or secret keys
+.env
+.env.local
+.env.*.local
+backend/.env
+frontend/.env
+*.env
+
+# Allow example configs
+!.env.example
+!backend/.env.example
+
+# ── Build Outputs ─────────────────────────
+dist/
+frontend/dist/
+build/
+*.egg-info/
+
+# ── Python Artifacts ──────────────────────
+__pycache__/
+backend/**/__pycache__/
+ml/**/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ── Virtual Environments ──────────────────
+venv/
+.venv/
+env/
+ENV/
+
+# ── Databases & Logs ──────────────────────
+# User's primary SQLite database is tracked and uploaded to GitHub
+!lab_management.db
+!backend/lab_management.db
+
+# Other database types and logs ignored
+*.sqlite
+*.sqlite3
+smartlab.db
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── Testing & Reports ─────────────────────
+frontend/playwright-report/
+frontend/test-results/
+playwright-report/
+test-results/
+
+# ── IDE & OS Files ────────────────────────
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

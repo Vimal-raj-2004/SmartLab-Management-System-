@@ -1,0 +1,401 @@
+description,complaint_type,severity,priority
+During operating systems practical: Mouse cursor jumps erratically across screen or freezes every few seconds during GUI design work. Happening repeatedly today.,Mouse issue,medium,medium
+Observed issue: Python compiler and GCC not installed or PATH variable missing for student accounts. Happening repeatedly today.,Software issue,medium,low
+Network connection icon shows a yellow warning triangle for 5 seconds on startup then resolves itself.,Network issue,low,low
+Urgent report: CMOS time clock resets to year 2000 on every restart. Inspection required.,Other,low,low
+"In Lab 2 row 4, Mouse not detected at all, optical sensor laser is completely off, cannot navigate Windows. Needs technician review.",Mouse issue,medium,medium
+Student reported: CMOS time clock resets to year 2000 on every restart.,Other,low,low
+"Urgent report: Mouse not detected at all, optical sensor laser is completely off, cannot navigate Windows.",Mouse issue,medium,medium
+Student reported: Entire keyboard is completely dead and unrecognized by BIOS. USB ports fail to detect any input device. Happening repeatedly today.,Keyboard issue,medium,high
+"Observed issue: Computer stuck on BIOS boot splash screen with error 'CMOS battery dead, press F1 to continue'.",Computer not starting,medium,high
+"Student reported: Caps Lock indicator LED does not light up, but uppercase switching works. Student had to swap to a different workstation.",Keyboard issue,medium,low
+"Computer stuck on BIOS boot splash screen with error 'CMOS battery dead, press F1 to continue'.",Computer not starting,medium,medium
+Student reported: Entire lab network switch is down. No PC in row A has ethernet internet connectivity. Online exam in 30 mins. Inspection required.,Network issue,medium,high
+"Keyboard USB cable is a bit short and stretched across desk, but works reliably.",Keyboard issue,low,low
+Display resolution is locked at 640x480 and native 1080p option is disabled in display settings.,Monitor issue,medium,medium
+Lab assistant noted that Mouse cursor jumps erratically across screen or freezes every few seconds during GUI design work. Student had to swap to a different workstation.,Mouse issue,medium,medium
+VS Code extensions cannot be installed due to permission restrictions in student profile directory.,Software issue,medium,medium
+"During morning lab session, Display shows severe red and green vertical glitch lines covering whole screen, unreadable text. Kindly resolve before the next lab class.",Monitor issue,high,high
+"Student reported: Letter key cap 'E' has worn off paint, but key types normally. Inspection required.",Keyboard issue,high,low
+Student reported: Mouse cursor jumps erratically across screen or freezes every few seconds during GUI design work. Student had to swap to a different workstation.,Mouse issue,medium,medium
+Urgent report: MATLAB license expired and throws licensing error 9 on startup. Students need it for tomorrow's lab. Please fix as soon as possible.,Software issue,medium,medium
+Power indicator LED on monitor blinks blue instead of solid green.,Monitor issue,low,low
+Severe system lag making it impossible to conduct practical exams. Takes 25 minutes just to load desktop.,Slow computer,high,high
+Urgent report: No display and computer will not power on at all. LED light on motherboard is red. Happening repeatedly today.,Computer not starting,medium,low
+Headphone jack on front panel is broken with a bent audio pin snapped inside the port. Needs technician review.,Other,low,low
+"The computer is completely dead. Power button does nothing, no fan spin or lights. Burning smell noticed near PSU.",Computer not starting,high,high
+Observed issue: Headphone jack on front panel is broken with a bent audio pin snapped inside the port.,Other,low,low
+"Mouse not detected at all, optical sensor laser is completely off, cannot navigate Windows. Happening repeatedly today.",Mouse issue,medium,medium
+Lab assistant noted that Network connection icon shows a yellow warning triangle for 5 seconds on startup then resolves itself. Please fix as soon as possible.,Network issue,low,low
+During operating systems practical: PC runs sluggishly when opening IDEs like Android Studio or VS Code. Takes 5 minutes to launch. Needs technician review.,Slow computer,medium,medium
+Please check PC: Display resolution is locked at 640x480 and native 1080p option is disabled in display settings. Student had to swap to a different workstation.,Monitor issue,medium,low
+"During morning lab session, Monitor power turns off automatically every 20 minutes and must be manually toggled back on. Reported during practical hours.",Monitor issue,medium,low
+"Urgent report: The computer is completely dead. Power button does nothing, no fan spin or lights. Burning smell noticed near PSU. Happening repeatedly today.",Computer not starting,medium,high
+"In Lab 2 row 4, No display and computer will not power on at all. LED light on motherboard is red. Happening repeatedly today.",Computer not starting,high,low
+"Caps Lock indicator LED does not light up, but uppercase switching works.",Keyboard issue,low,low
+"Please check PC: Occasional lag spike when accessing remote repository on GitHub, but local network is stable. Kindly resolve before the next lab class.",Network issue,low,low
+"In Lab 2 row 4, Corrupted registry causing system to fail during user profile service load. Student had to swap to a different workstation.",Software issue,high,high
+Student reported: Git command line tool throws SSL certificate validation failed when cloning repositories. Happening repeatedly today.,Software issue,medium,low
+"During morning lab session, Takes around 30 seconds extra to boot up compared to neighboring computers, but works fine once loaded. Kindly resolve before the next lab class.",Slow computer,low,low
+"In Lab 2 row 4, Keyboard USB cable is a bit short and stretched across desk, but works reliably. Happening repeatedly today.",Keyboard issue,low,low
+"Lab assistant noted that Network cable RJ45 clip broken and port pins bent, completely disconnected from lab LAN.",Network issue,high,high
+Lab assistant noted that Power indicator LED on monitor blinks blue instead of solid green. Needs technician review.,Monitor issue,low,low
+"Keyboard tilt feet / stand on the underside is broken, sits flat on desk.",Keyboard issue,low,low
+Monitor stand height adjustment screw is tight and hard to swivel.,Monitor issue,low,low
+"Ethernet port on motherboard appears dead. No link lights, cannot connect to college intranet or gateway.",Network issue,high,high
+External USB ports on the front panel are loose and disconnect USB flash drives when touched.,Other,medium,medium
+"In Lab 2 row 4, Computer is throttling severely due to overheating CPU reaching 95C. Shuts down during code compilation. Student had to swap to a different workstation.",Slow computer,high,high
+Faculty notice: System reboots repeatedly when loading Windows. Safe mode works intermittently. Needs technician review.,Computer not starting,medium,medium
+Please check PC: Operating system blue screen of death (BSOD) with error CRITICAL_PROCESS_DIED immediately after login. Reported during practical hours.,Software issue,medium,high
+"Takes around 30 seconds extra to boot up compared to neighboring computers, but works fine once loaded.",Slow computer,low,low
+Please check PC: System is completely frozen and unresponsive. Task manager shows 100% disk usage and 99% CPU on idle. Reported during practical hours.,Slow computer,high,high
+Dark mode setting resets to default light mode upon logging out.,Software issue,low,low
+"Urgent report: Cannot access the local file share server, though external web browsing works fine. Student had to swap to a different workstation.",Network issue,medium,medium
+Observed issue: Entire lab network switch is down. No PC in row A has ethernet internet connectivity. Online exam in 30 mins. Happening repeatedly today.,Network issue,medium,high
+Monitor flickers rapidly every few seconds causing severe eye strain to students.,Monitor issue,medium,medium
+"Urgent report: Monitor screen remains completely pitch black. Power LED blinks amber, no signal detected on HDMI or DisplayPort. Inspection required.",Monitor issue,medium,low
+Python compiler and GCC not installed or PATH variable missing for student accounts.,Software issue,medium,medium
+"Observed issue: Single stuck dead pixel in bottom right corner of display, barely noticeable.",Monitor issue,medium,high
+Please check PC: PC won't boot into Windows. Error: 'No bootable device found - insert boot disk and press any key'. Hard drive clicking loudly. Student had to swap to a different workstation.,Computer not starting,high,high
+"Cannot access the local file share server, though external web browsing works fine.",Network issue,medium,medium
+Please check PC: Cannot reach database server or internet. DNS lookup failing across all systems in Lab B. Student had to swap to a different workstation.,Network issue,high,high
+"Urgent report: Ethernet port on motherboard appears dead. No link lights, cannot connect to college intranet or gateway. Reported during practical hours.",Network issue,medium,high
+"In Lab 2 row 4, Several keys (A, S, D, Backspace) are malfunctioning and repeating random characters.",Keyboard issue,medium,medium
+"Urgent report: Ethernet cable jacket is slightly frayed near the wall jack, but network connection is fully functional. Happening repeatedly today.",Network issue,low,low
+Lab air conditioning unit leaking water directly onto PC rack. Water dripping near power sockets.,Other,high,high
+Urgent report: Entire keyboard is completely dead and unrecognized by BIOS. USB ports fail to detect any input device. Student had to swap to a different workstation.,Keyboard issue,low,high
+Network speed drops to 10 Mbps instead of 1 Gbps due to bad patch cord.,Network issue,medium,medium
+Student reported: Frequent network disconnections every 10 minutes interrupting student file downloads. Inspection required.,Network issue,medium,medium
+"In Lab 2 row 4, Severe system lag making it impossible to conduct practical exams. Takes 25 minutes just to load desktop. Reported during practical hours.",Slow computer,medium,high
+Please check PC: Screen has a strong yellow tint / color discoloration due to loose VGA/HDMI cable pin. Needs technician review.,Monitor issue,medium,medium
+Monitor power turns off automatically every 20 minutes and must be manually toggled back on.,Monitor issue,medium,medium
+During operating systems practical: UPS backup battery not holding charge; PC immediately loses power during momentary voltage fluctuations.,Other,high,high
+"Faculty notice: Cannot access the local file share server, though external web browsing works fine. Reported during practical hours.",Network issue,medium,medium
+PC won't boot into Windows. Error: 'No bootable device found - insert boot disk and press any key'. Hard drive clicking loudly.,Computer not starting,high,high
+"Desktop shortcut icon for Dev-C++ is missing, but program opens from start menu.",Software issue,low,low
+Faculty notice: Spell check dictionary in LibreOffice writer shows red underline on technical jargon.,Software issue,low,low
+"Urgent report: Desktop shortcut icon for Dev-C++ is missing, but program opens from start menu. Please fix as soon as possible.",Software issue,low,low
+Urgent report: Spilled water on keyboard earlier today. Keys feel sticky and several letters produce incorrect symbols. Needs technician review.,Keyboard issue,medium,high
+"Observed issue: Cannot access the local file share server, though external web browsing works fine. Please fix as soon as possible.",Network issue,medium,medium
+Lab assistant noted that VS Code extensions cannot be installed due to permission restrictions in student profile directory. Student had to swap to a different workstation.,Software issue,low,low
+"Student reported: Right click button does not respond, preventing context menu usage in programming tools. Inspection required.",Mouse issue,medium,medium
+Computer fails to boot. Emits 5 continuous loud beeps indicating motherboard or CPU failure. Won't post BIOS.,Computer not starting,high,high
+Computer is slower than usual after recent Windows update. Takes longer to boot up in the morning.,Slow computer,medium,medium
+"During operating systems practical: Multiple essential keys stuck down (Enter, Ctrl, Shift) preventing user from typing password to login. Reported during practical hours.",Keyboard issue,medium,high
+During operating systems practical: External USB ports on the front panel are loose and disconnect USB flash drives when touched. Inspection required.,Other,medium,medium
+Antivirus background scan causes intermittent slowdowns during afternoon lab sessions. Reported during practical hours.,Slow computer,high,high
+"Mouse pad is worn out and dirty, causing slight friction when sliding.",Mouse issue,low,low
+Student reported: Entire lab network switch is down. No PC in row A has ethernet internet connectivity. Online exam in 30 mins. Student had to swap to a different workstation.,Network issue,low,high
+During operating systems practical: Computer is throttling severely due to overheating CPU reaching 95C. Shuts down during code compilation. Needs technician review.,Slow computer,high,high
+"In Lab 2 row 4, System experiences noticeable lag and delay when running multiple browser tabs and Python scripts. Inspection required.",Slow computer,medium,medium
+Lab assistant noted that Antivirus background scan causes intermittent slowdowns during afternoon lab sessions. Please fix as soon as possible.,Slow computer,medium,high
+Faculty notice: Computer is throttling severely due to overheating CPU reaching 95C. Shuts down during code compilation. Happening repeatedly today.,Slow computer,medium,high
+Crucial lab exam software (Safe Exam Browser / Oracle Client) crashes on launch with missing DLL error. Reported during practical hours.,Software issue,medium,high
+"Right click button does not respond, preventing context menu usage in programming tools. Needs technician review.",Mouse issue,medium,medium
+"Lab assistant noted that Ethernet cable jacket is slightly frayed near the wall jack, but network connection is fully functional. Inspection required.",Network issue,low,low
+"Please check PC: Several keys (A, S, D, Backspace) are malfunctioning and repeating random characters. Happening repeatedly today.",Keyboard issue,medium,medium
+Faculty notice: Projector in Lab A won't connect to lecturer workstation PC for class presentation. Inspection required.,Other,high,high
+Observed issue: Frequent network disconnections every 10 minutes interrupting student file downloads.,Network issue,medium,medium
+"In Lab 2 row 4, Monitor stand height adjustment screw is tight and hard to swivel. Happening repeatedly today.",Monitor issue,low,low
+"Student reported: Right click button does not respond, preventing context menu usage in programming tools. Reported during practical hours.",Mouse issue,medium,medium
+"Single stuck dead pixel in bottom right corner of display, barely noticeable.",Monitor issue,low,low
+Urgent report: Monitor stand height adjustment screw is tight and hard to swivel.,Monitor issue,low,low
+"Observed issue: Letter key cap 'E' has worn off paint, but key types normally. Needs technician review.",Keyboard issue,medium,low
+PC runs sluggishly when opening IDEs like Android Studio or VS Code. Takes 5 minutes to launch.,Slow computer,medium,medium
+"Monitor screen remains completely pitch black. Power LED blinks amber, no signal detected on HDMI or DisplayPort.",Monitor issue,high,high
+Urgent report: PC runs sluggishly when opening IDEs like Android Studio or VS Code. Takes 5 minutes to launch. Inspection required.,Slow computer,medium,medium
+Computer shuts down randomly during startup or restarts unexpectedly after 10 minutes.,Computer not starting,medium,medium
+High RAM usage causing minor freezes during Java programming sessions.,Slow computer,medium,medium
+During operating systems practical: Operating system blue screen of death (BSOD) with error CRITICAL_PROCESS_DIED immediately after login. Student had to swap to a different workstation.,Software issue,medium,high
+Lab assistant noted that System experiences noticeable lag and delay when running multiple browser tabs and Python scripts. Inspection required.,Slow computer,medium,medium
+Observed issue: Network connection icon shows a yellow warning triangle for 5 seconds on startup then resolves itself. Reported during practical hours.,Network issue,low,low
+Observed issue: Monitor power turns off automatically every 20 minutes and must be manually toggled back on. Inspection required.,Monitor issue,medium,low
+"Lab assistant noted that Computer power button is stiff and needs to be pressed firmly to turn on, but it works fine once booted. Needs technician review.",Computer not starting,low,low
+"In Lab 2 row 4, Several keys (A, S, D, Backspace) are malfunctioning and repeating random characters.",Keyboard issue,medium,medium
+Student reported: Mouse cursor jumps erratically across screen or freezes every few seconds during GUI design work. Needs technician review.,Mouse issue,medium,medium
+Urgent report: Cannot reach database server or internet. DNS lookup failing across all systems in Lab B. Kindly resolve before the next lab class.,Network issue,high,high
+Mouse cursor jumps erratically across screen or freezes every few seconds during GUI design work.,Mouse issue,medium,medium
+Headphone jack on front panel is broken with a bent audio pin snapped inside the port.,Other,low,low
+Observed issue: Monitor power turns off automatically every 20 minutes and must be manually toggled back on.,Monitor issue,medium,low
+"In Lab 2 row 4, Monitor stand height adjustment screw is tight and hard to swivel. Kindly resolve before the next lab class.",Monitor issue,medium,low
+"Urgent report: Mouse left click button is permanently stuck down, registering non-stop double clicks and dragging windows uncontrollably. Reported during practical hours.",Mouse issue,medium,medium
+"During morning lab session, PC takes 10 to 15 tries pressing power button to start up. Suspect loose power switch. Please fix as soon as possible.",Computer not starting,medium,medium
+Student reported: No display and computer will not power on at all. LED light on motherboard is red. Kindly resolve before the next lab class.,Computer not starting,medium,low
+System experiences noticeable lag and delay when running multiple browser tabs and Python scripts.,Slow computer,medium,medium
+Please check PC: Screen has a strong yellow tint / color discoloration due to loose VGA/HDMI cable pin. Needs technician review.,Monitor issue,medium,medium
+Entire lab network switch is down. No PC in row A has ethernet internet connectivity. Online exam in 30 mins.,Network issue,high,high
+"Lab assistant noted that Takes around 30 seconds extra to boot up compared to neighboring computers, but works fine once loaded.",Slow computer,low,low
+"In Lab 2 row 4, Headphone jack on front panel is broken with a bent audio pin snapped inside the port. Please fix as soon as possible.",Other,low,low
+"Urgent report: Letter key cap 'E' has worn off paint, but key types normally. Inspection required.",Keyboard issue,low,low
+Urgent report: CMOS time clock resets to year 2000 on every restart. Kindly resolve before the next lab class.,Other,low,low
+"Please check PC: Mouse pad is worn out and dirty, causing slight friction when sliding. Kindly resolve before the next lab class.",Mouse issue,medium,low
+"During morning lab session, Google Chrome crashes when attempting to open college portal; Firefox works as temporary workaround. Student had to swap to a different workstation.",Software issue,medium,high
+"Network cable RJ45 clip broken and port pins bent, completely disconnected from lab LAN.",Network issue,high,high
+Observed issue: Operating system blue screen of death (BSOD) with error CRITICAL_PROCESS_DIED immediately after login. Happening repeatedly today.,Software issue,low,high
+Lab assistant noted that System is completely frozen and unresponsive. Task manager shows 100% disk usage and 99% CPU on idle.,Slow computer,high,high
+"During morning lab session, Python compiler and GCC not installed or PATH variable missing for student accounts.",Software issue,medium,low
+Observed issue: Monitor bezel has a small plastic scratch on the outer plastic border. Please fix as soon as possible.,Monitor issue,medium,low
+PC takes 10 to 15 tries pressing power button to start up. Suspect loose power switch.,Computer not starting,medium,medium
+Student reported: Mouse scroll wheel is broken and spins freely without scrolling documents or code files. Needs technician review.,Mouse issue,medium,medium
+"Urgent report: Desktop shortcut icon for Dev-C++ is missing, but program opens from start menu. Reported during practical hours.",Software issue,low,low
+"Urgent report: Mouse scroll wheel squeaks slightly when scrolled quickly, but operates properly.",Mouse issue,medium,low
+Ransomware or virus alert pop-up detected on screen. File extensions are being modified. Urgent isolation required.,Software issue,high,high
+"Display shows severe red and green vertical glitch lines covering whole screen, unreadable text. Needs technician review.",Monitor issue,high,high
+Lab assistant noted that VS Code extensions cannot be installed due to permission restrictions in student profile directory. Inspection required.,Software issue,medium,low
+Student reported: Display resolution is locked at 640x480 and native 1080p option is disabled in display settings. Needs technician review.,Monitor issue,medium,low
+"Student reported: Slight delay when opening file explorer, but normal software operates smoothly. Happening repeatedly today.",Slow computer,low,low
+Urgent report: Power indicator LED on monitor blinks blue instead of solid green.,Monitor issue,medium,low
+"Mouse left click button is permanently stuck down, registering non-stop double clicks and dragging windows uncontrollably.",Mouse issue,medium,medium
+During operating systems practical: Monitor stand height adjustment screw is tight and hard to swivel. Happening repeatedly today.,Monitor issue,medium,low
+Student reported: No display and computer will not power on at all. LED light on motherboard is red. Reported during practical hours.,Computer not starting,low,low
+Observed issue: PC runs sluggishly when opening IDEs like Android Studio or VS Code. Takes 5 minutes to launch. Student had to swap to a different workstation.,Slow computer,medium,medium
+No display and computer will not power on at all. LED light on motherboard is red.,Computer not starting,medium,high
+"Lab assistant noted that Ethernet port on motherboard appears dead. No link lights, cannot connect to college intranet or gateway. Inspection required.",Network issue,medium,high
+During operating systems practical: Monitor stand height adjustment screw is tight and hard to swivel. Happening repeatedly today.,Monitor issue,medium,low
+"During morning lab session, Display resolution is locked at 640x480 and native 1080p option is disabled in display settings.",Monitor issue,medium,low
+System reboots repeatedly when loading Windows. Safe mode works intermittently.,Computer not starting,medium,medium
+"Observed issue: Takes around 30 seconds extra to boot up compared to neighboring computers, but works fine once loaded. Happening repeatedly today.",Slow computer,low,low
+"Urgent report: Several keys (A, S, D, Backspace) are malfunctioning and repeating random characters. Needs technician review.",Keyboard issue,medium,medium
+CMOS time clock resets to year 2000 on every restart.,Other,low,low
+"Student reported: Keyboard USB cable is a bit short and stretched across desk, but works reliably. Inspection required.",Keyboard issue,medium,low
+Please check PC: Python compiler and GCC not installed or PATH variable missing for student accounts. Please fix as soon as possible.,Software issue,medium,low
+Computer fails to boot. Emits 5 continuous loud beeps indicating motherboard or CPU failure. Won't post BIOS. Inspection required.,Computer not starting,high,high
+During operating systems practical: Monitor flickers rapidly every few seconds causing severe eye strain to students. Kindly resolve before the next lab class.,Monitor issue,medium,medium
+"Observed issue: Ethernet cable jacket is slightly frayed near the wall jack, but network connection is fully functional.",Network issue,low,low
+Lab assistant noted that Monitor flickers rapidly every few seconds causing severe eye strain to students.,Monitor issue,medium,medium
+Lab assistant noted that Corrupted registry causing system to fail during user profile service load. Needs technician review.,Software issue,high,high
+"Urgent report: Single stuck dead pixel in bottom right corner of display, barely noticeable.",Monitor issue,high,high
+"Student reported: Keyboard USB cable is a bit short and stretched across desk, but works reliably. Needs technician review.",Keyboard issue,low,low
+Please check PC: Cannot reach database server or internet. DNS lookup failing across all systems in Lab B. Student had to swap to a different workstation.,Network issue,high,high
+Faculty notice: Monitor emits a loud high-pitched whining noise and displays smoke/sparks from back vent.,Monitor issue,medium,high
+"Display shows severe red and green vertical glitch lines covering whole screen, unreadable text. Please fix as soon as possible.",Monitor issue,high,high
+"Observed issue: VLC media player needs update to latest version, minor prompt appears. Happening repeatedly today.",Software issue,low,low
+"Display shows severe red and green vertical glitch lines covering whole screen, unreadable text.",Monitor issue,high,high
+Lab assistant noted that Power indicator LED on monitor blinks blue instead of solid green. Student had to swap to a different workstation.,Monitor issue,medium,low
+"During morning lab session, PC won't boot into Windows. Error: 'No bootable device found - insert boot disk and press any key'. Hard drive clicking loudly. Happening repeatedly today.",Computer not starting,high,high
+"Urgent report: Mouse not detected at all, optical sensor laser is completely off, cannot navigate Windows. Reported during practical hours.",Mouse issue,medium,medium
+Faculty notice: Computer feels slightly sluggish after being on for 8 hours. Restart temporarily fixes it. Kindly resolve before the next lab class.,Slow computer,low,low
+Student reported: Very low internet bandwidth and high ping packet loss on this workstation compared to other PCs. Reported during practical hours.,Network issue,medium,medium
+Student reported: Spell check dictionary in LibreOffice writer shows red underline on technical jargon. Please fix as soon as possible.,Software issue,low,low
+Screen is shattered with visible internal LCD crack and liquid bleed across 80% of display.,Monitor issue,high,high
+Computer feels slightly sluggish after being on for 8 hours. Restart temporarily fixes it.,Slow computer,low,low
+Crucial lab exam software (Safe Exam Browser / Oracle Client) crashes on launch with missing DLL error.,Software issue,high,high
+During operating systems practical: Screen has a strong yellow tint / color discoloration due to loose VGA/HDMI cable pin. Kindly resolve before the next lab class.,Monitor issue,medium,medium
+"In Lab 2 row 4, Mouse cursor jumps erratically across screen or freezes every few seconds during GUI design work. Kindly resolve before the next lab class.",Mouse issue,medium,medium
+Please check PC: Screen is shattered with visible internal LCD crack and liquid bleed across 80% of display.,Monitor issue,medium,high
+Monitor emits a loud high-pitched whining noise and displays smoke/sparks from back vent.,Monitor issue,high,high
+"Urgent report: Cannot access the local file share server, though external web browsing works fine. Student had to swap to a different workstation.",Network issue,medium,medium
+Urgent report: Computer shuts down randomly during startup or restarts unexpectedly after 10 minutes. Please fix as soon as possible.,Computer not starting,medium,medium
+"In Lab 2 row 4, Spilled water on keyboard earlier today. Keys feel sticky and several letters produce incorrect symbols. Student had to swap to a different workstation.",Keyboard issue,low,high
+Faculty notice: Projector in Lab A won't connect to lecturer workstation PC for class presentation. Needs technician review.,Other,high,high
+"During morning lab session, Keyboard USB cable is a bit short and stretched across desk, but works reliably. Inspection required.",Keyboard issue,low,low
+Please check PC: Projector in Lab A won't connect to lecturer workstation PC for class presentation. Inspection required.,Other,high,high
+Computer shuts down randomly during startup or restarts unexpectedly after 10 minutes. Inspection required.,Computer not starting,medium,medium
+Student reported: Monitor emits a loud high-pitched whining noise and displays smoke/sparks from back vent. Needs technician review.,Monitor issue,low,high
+"Student reported: Display shows severe red and green vertical glitch lines covering whole screen, unreadable text. Reported during practical hours.",Monitor issue,medium,high
+Display resolution is locked at 640x480 and native 1080p option is disabled in display settings. Inspection required.,Monitor issue,medium,low
+"Keyboard USB cable is a bit short and stretched across desk, but works reliably. Please fix as soon as possible.",Keyboard issue,low,low
+"During morning lab session, Ransomware or virus alert pop-up detected on screen. File extensions are being modified. Urgent isolation required. Please fix as soon as possible.",Software issue,medium,high
+During operating systems practical: Corrupted registry causing system to fail during user profile service load. Needs technician review.,Software issue,high,high
+Observed issue: Entire keyboard is completely dead and unrecognized by BIOS. USB ports fail to detect any input device. Please fix as soon as possible.,Keyboard issue,medium,high
+During operating systems practical: High RAM usage causing minor freezes during Java programming sessions. Happening repeatedly today.,Slow computer,medium,medium
+Faculty notice: Network connection icon shows a yellow warning triangle for 5 seconds on startup then resolves itself. Happening repeatedly today.,Network issue,low,low
+Projector in Lab A won't connect to lecturer workstation PC for class presentation. Needs technician review.,Other,high,high
+Monitor stand height adjustment screw is tight and hard to swivel. Reported during practical hours.,Monitor issue,medium,low
+During operating systems practical: Operating system blue screen of death (BSOD) with error CRITICAL_PROCESS_DIED immediately after login. Needs technician review.,Software issue,low,high
+"In Lab 2 row 4, Mouse scroll wheel squeaks slightly when scrolled quickly, but operates properly. Inspection required.",Mouse issue,medium,low
+Please check PC: PC powers on for two seconds then immediately shuts down in a boot loop. Blue smoke seen from back fan. Needs technician review.,Computer not starting,medium,high
+Corrupted registry causing system to fail during user profile service load.,Software issue,high,high
+"Computer power button is stiff and needs to be pressed firmly to turn on, but it works fine once booted.",Computer not starting,low,low
+"During morning lab session, Computer is slower than usual after recent Windows update. Takes longer to boot up in the morning. Reported during practical hours.",Slow computer,medium,medium
+"Student reported: Rubber coating on mouse side grip is peeling off, purely cosmetic. Reported during practical hours.",Mouse issue,low,low
+"In Lab 2 row 4, Headphone jack on front panel is broken with a bent audio pin snapped inside the port.",Other,low,low
+Student reported: CPU is not powering on at all. Sparks were seen near the power cord connector. Entire row shut off. Happening repeatedly today.,Computer not starting,medium,high
+"During morning lab session, Very low internet bandwidth and high ping packet loss on this workstation compared to other PCs.",Network issue,medium,medium
+"During morning lab session, Headphone jack on front panel is broken with a bent audio pin snapped inside the port. Inspection required.",Other,low,low
+"Faculty notice: Cannot access the local file share server, though external web browsing works fine. Happening repeatedly today.",Network issue,medium,medium
+"In Lab 2 row 4, Antivirus background scan causes intermittent slowdowns during afternoon lab sessions.",Slow computer,high,high
+Computer is throttling severely due to overheating CPU reaching 95C. Shuts down during code compilation. Kindly resolve before the next lab class.,Slow computer,high,high
+Urgent report: Very low internet bandwidth and high ping packet loss on this workstation compared to other PCs. Student had to swap to a different workstation.,Network issue,medium,medium
+"Lab assistant noted that Several keys (A, S, D, Backspace) are malfunctioning and repeating random characters. Needs technician review.",Keyboard issue,medium,medium
+"During operating systems practical: Takes around 30 seconds extra to boot up compared to neighboring computers, but works fine once loaded. Inspection required.",Slow computer,low,low
+"Observed issue: Network cable RJ45 clip broken and port pins bent, completely disconnected from lab LAN.",Network issue,high,high
+"In Lab 2 row 4, Network connection icon shows a yellow warning triangle for 5 seconds on startup then resolves itself. Inspection required.",Network issue,low,low
+Please check PC: Monitor emits a loud high-pitched whining noise and displays smoke/sparks from back vent. Reported during practical hours.,Monitor issue,medium,high
+During operating systems practical: Screen is shattered with visible internal LCD crack and liquid bleed across 80% of display. Kindly resolve before the next lab class.,Monitor issue,medium,high
+"Computer stuck on BIOS boot splash screen with error 'CMOS battery dead, press F1 to continue'. Inspection required.",Computer not starting,medium,high
+Computer is slower than usual after recent Windows update. Takes longer to boot up in the morning.,Slow computer,medium,medium
+Observed issue: CMOS time clock resets to year 2000 on every restart. Please fix as soon as possible.,Other,low,low
+"In Lab 2 row 4, Monitor power turns off automatically every 20 minutes and must be manually toggled back on. Student had to swap to a different workstation.",Monitor issue,medium,low
+System does not turn on. Power supply makes a loud clicking sound and shuts off immediately. Lab exam scheduled today.,Computer not starting,high,high
+Faculty notice: Frequent network disconnections every 10 minutes interrupting student file downloads. Inspection required.,Network issue,medium,medium
+"In Lab 2 row 4, Takes around 30 seconds extra to boot up compared to neighboring computers, but works fine once loaded. Needs technician review.",Slow computer,low,low
+Observed issue: Python compiler and GCC not installed or PATH variable missing for student accounts. Reported during practical hours.,Software issue,medium,low
+Display resolution is locked at 640x480 and native 1080p option is disabled in display settings. Please fix as soon as possible.,Monitor issue,high,low
+Cannot reach database server or internet. DNS lookup failing across all systems in Lab B.,Network issue,high,high
+Student reported: Display resolution is locked at 640x480 and native 1080p option is disabled in display settings. Needs technician review.,Monitor issue,medium,low
+Student reported: Projector in Lab A won't connect to lecturer workstation PC for class presentation. Inspection required.,Other,high,high
+"Faculty notice: Letter key cap 'E' has worn off paint, but key types normally. Inspection required.",Keyboard issue,medium,low
+"Please check PC: Display shows severe red and green vertical glitch lines covering whole screen, unreadable text.",Monitor issue,high,high
+Student reported: Computer is slower than usual after recent Windows update. Takes longer to boot up in the morning. Kindly resolve before the next lab class.,Slow computer,medium,medium
+Student reported: Spell check dictionary in LibreOffice writer shows red underline on technical jargon. Student had to swap to a different workstation.,Software issue,low,low
+Observed issue: CMOS time clock resets to year 2000 on every restart. Please fix as soon as possible.,Other,low,low
+Git command line tool throws SSL certificate validation failed when cloning repositories. Student had to swap to a different workstation.,Software issue,medium,low
+Monitor bezel has a small plastic scratch on the outer plastic border.,Monitor issue,low,low
+"Student reported: Keyboard tilt feet / stand on the underside is broken, sits flat on desk. Needs technician review.",Keyboard issue,medium,low
+Very low internet bandwidth and high ping packet loss on this workstation compared to other PCs.,Network issue,medium,medium
+Projector in Lab A won't connect to lecturer workstation PC for class presentation.,Other,high,high
+"In Lab 2 row 4, Screen has a strong yellow tint / color discoloration due to loose VGA/HDMI cable pin. Please fix as soon as possible.",Monitor issue,medium,medium
+"Observed issue: Letter key cap 'E' has worn off paint, but key types normally. Reported during practical hours.",Keyboard issue,medium,low
+"In Lab 2 row 4, Right click button does not respond, preventing context menu usage in programming tools. Student had to swap to a different workstation.",Mouse issue,medium,medium
+During operating systems practical: Headphone jack on front panel is broken with a bent audio pin snapped inside the port. Inspection required.,Other,low,low
+"Please check PC: Keyboard tilt feet / stand on the underside is broken, sits flat on desk. Reported during practical hours.",Keyboard issue,medium,low
+"Observed issue: Mouse left click button is permanently stuck down, registering non-stop double clicks and dragging windows uncontrollably. Reported during practical hours.",Mouse issue,medium,medium
+"Please check PC: VLC media player needs update to latest version, minor prompt appears. Reported during practical hours.",Software issue,low,low
+Please check PC: VS Code extensions cannot be installed due to permission restrictions in student profile directory. Needs technician review.,Software issue,medium,low
+"VLC media player needs update to latest version, minor prompt appears.",Software issue,low,low
+Faculty notice: Computer is slower than usual after recent Windows update. Takes longer to boot up in the morning. Happening repeatedly today.,Slow computer,medium,medium
+"Rubber coating on mouse side grip is peeling off, purely cosmetic.",Mouse issue,low,low
+"During morning lab session, Network speed drops to 10 Mbps instead of 1 Gbps due to bad patch cord. Kindly resolve before the next lab class.",Network issue,medium,medium
+"Urgent report: Single stuck dead pixel in bottom right corner of display, barely noticeable. Please fix as soon as possible.",Monitor issue,low,high
+Urgent report: Entire lab network switch is down. No PC in row A has ethernet internet connectivity. Online exam in 30 mins.,Network issue,low,high
+"In Lab 2 row 4, Projector in Lab A won't connect to lecturer workstation PC for class presentation.",Other,high,high
+"Power LED light does not glow when PC is on, but system runs normally.",Computer not starting,low,low
+Operating system blue screen of death (BSOD) with error CRITICAL_PROCESS_DIED immediately after login.,Software issue,high,high
+Frequent network disconnections every 10 minutes interrupting student file downloads.,Network issue,medium,medium
+"In Lab 2 row 4, Monitor bezel has a small plastic scratch on the outer plastic border. Kindly resolve before the next lab class.",Monitor issue,medium,low
+"Lab assistant noted that The computer is completely dead. Power button does nothing, no fan spin or lights. Burning smell noticed near PSU. Happening repeatedly today.",Computer not starting,high,high
+Please check PC: Network connection icon shows a yellow warning triangle for 5 seconds on startup then resolves itself. Reported during practical hours.,Network issue,low,low
+"During morning lab session, Cannot reach database server or internet. DNS lookup failing across all systems in Lab B. Happening repeatedly today.",Network issue,high,high
+"Faculty notice: Several keys (A, S, D, Backspace) are malfunctioning and repeating random characters. Inspection required.",Keyboard issue,medium,medium
+Please check PC: Headphone jack on front panel is broken with a bent audio pin snapped inside the port. Student had to swap to a different workstation.,Other,low,low
+"Several keys (A, S, D, Backspace) are malfunctioning and repeating random characters.",Keyboard issue,medium,medium
+During operating systems practical: CMOS time clock resets to year 2000 on every restart. Kindly resolve before the next lab class.,Other,low,low
+"During operating systems practical: Keyboard USB cable is a bit short and stretched across desk, but works reliably. Needs technician review.",Keyboard issue,low,low
+During operating systems practical: Network speed drops to 10 Mbps instead of 1 Gbps due to bad patch cord. Kindly resolve before the next lab class.,Network issue,medium,medium
+"During morning lab session, Frequent network disconnections every 10 minutes interrupting student file downloads. Inspection required.",Network issue,medium,medium
+Google Chrome crashes when attempting to open college portal; Firefox works as temporary workaround.,Software issue,medium,medium
+"In Lab 2 row 4, Monitor flickers rapidly every few seconds causing severe eye strain to students. Reported during practical hours.",Monitor issue,medium,medium
+"In Lab 2 row 4, Mouse left click button is permanently stuck down, registering non-stop double clicks and dragging windows uncontrollably. Please fix as soon as possible.",Mouse issue,medium,medium
+Please check PC: Monitor flickers rapidly every few seconds causing severe eye strain to students. Please fix as soon as possible.,Monitor issue,medium,medium
+"Observed issue: VLC media player needs update to latest version, minor prompt appears. Happening repeatedly today.",Software issue,low,low
+PC powers on for two seconds then immediately shuts down in a boot loop. Blue smoke seen from back fan.,Computer not starting,high,high
+Please check PC: Entire lab network switch is down. No PC in row A has ethernet internet connectivity. Online exam in 30 mins. Needs technician review.,Network issue,low,high
+Operating system blue screen of death (BSOD) with error CRITICAL_PROCESS_DIED immediately after login. Please fix as soon as possible.,Software issue,medium,high
+"In Lab 2 row 4, Slight delay when opening file explorer, but normal software operates smoothly. Student had to swap to a different workstation.",Slow computer,low,low
+Please check PC: Google Chrome crashes when attempting to open college portal; Firefox works as temporary workaround. Reported during practical hours.,Software issue,medium,high
+"Urgent report: Computer power button is stiff and needs to be pressed firmly to turn on, but it works fine once booted. Please fix as soon as possible.",Computer not starting,low,low
+"Student reported: Display shows severe red and green vertical glitch lines covering whole screen, unreadable text. Kindly resolve before the next lab class.",Monitor issue,high,high
+Urgent report: PC won't boot into Windows. Error: 'No bootable device found - insert boot disk and press any key'. Hard drive clicking loudly. Please fix as soon as possible.,Computer not starting,high,high
+Please check PC: CMOS time clock resets to year 2000 on every restart. Kindly resolve before the next lab class.,Other,low,low
+Please check PC: Number pad keys on the right side do not work even when NumLock is turned on. Inspection required.,Keyboard issue,medium,medium
+Mouse scroll wheel is broken and spins freely without scrolling documents or code files.,Mouse issue,medium,medium
+Spell check dictionary in LibreOffice writer shows red underline on technical jargon.,Software issue,low,low
+"Occasional lag spike when accessing remote repository on GitHub, but local network is stable.",Network issue,low,low
+Urgent report: Display resolution is locked at 640x480 and native 1080p option is disabled in display settings. Needs technician review.,Monitor issue,medium,low
+Observed issue: Mouse cursor jumps erratically across screen or freezes every few seconds during GUI design work. Needs technician review.,Mouse issue,medium,medium
+"Lab assistant noted that Display shows severe red and green vertical glitch lines covering whole screen, unreadable text. Kindly resolve before the next lab class.",Monitor issue,high,high
+"Network cable RJ45 clip broken and port pins bent, completely disconnected from lab LAN.",Network issue,high,high
+Lab assistant noted that Very low internet bandwidth and high ping packet loss on this workstation compared to other PCs.,Network issue,medium,medium
+"Ethernet port on motherboard appears dead. No link lights, cannot connect to college intranet or gateway. Kindly resolve before the next lab class.",Network issue,medium,high
+Corrupted registry causing system to fail during user profile service load. Kindly resolve before the next lab class.,Software issue,high,high
+Observed issue: Computer feels slightly sluggish after being on for 8 hours. Restart temporarily fixes it. Reported during practical hours.,Slow computer,low,low
+Faculty notice: Monitor flickers rapidly every few seconds causing severe eye strain to students. Happening repeatedly today.,Monitor issue,medium,medium
+Network connection icon shows a yellow warning triangle for 5 seconds on startup then resolves itself. Kindly resolve before the next lab class.,Network issue,low,low
+"During operating systems practical: Computer stuck on BIOS boot splash screen with error 'CMOS battery dead, press F1 to continue'. Needs technician review.",Computer not starting,medium,high
+"Right click button does not respond, preventing context menu usage in programming tools.",Mouse issue,medium,medium
+Student reported: Git command line tool throws SSL certificate validation failed when cloning repositories. Student had to swap to a different workstation.,Software issue,medium,low
+"Student reported: The computer is completely dead. Power button does nothing, no fan spin or lights. Burning smell noticed near PSU.",Computer not starting,medium,high
+PC takes 10 to 15 tries pressing power button to start up. Suspect loose power switch.,Computer not starting,medium,medium
+"Mouse scroll wheel squeaks slightly when scrolled quickly, but operates properly.",Mouse issue,low,low
+Lab assistant noted that Monitor flickers rapidly every few seconds causing severe eye strain to students. Needs technician review.,Monitor issue,medium,medium
+Computer is throttling severely due to overheating CPU reaching 95C. Shuts down during code compilation.,Slow computer,high,high
+"Urgent report: Mouse scroll wheel squeaks slightly when scrolled quickly, but operates properly. Kindly resolve before the next lab class.",Mouse issue,medium,low
+MATLAB license expired and throws licensing error 9 on startup. Students need it for tomorrow's lab.,Software issue,medium,medium
+Monitor stand height adjustment screw is tight and hard to swivel. Happening repeatedly today.,Monitor issue,medium,low
+Corrupted registry causing system to fail during user profile service load.,Software issue,high,high
+Lab assistant noted that Cannot reach database server or internet. DNS lookup failing across all systems in Lab B. Reported during practical hours.,Network issue,high,high
+Student reported: Computer is slower than usual after recent Windows update. Takes longer to boot up in the morning.,Slow computer,medium,medium
+"During morning lab session, Computer is slower than usual after recent Windows update. Takes longer to boot up in the morning. Reported during practical hours.",Slow computer,medium,medium
+Observed issue: Corrupted registry causing system to fail during user profile service load. Needs technician review.,Software issue,high,high
+"Observed issue: Keyboard USB cable is a bit short and stretched across desk, but works reliably. Reported during practical hours.",Keyboard issue,low,low
+"Urgent report: Cannot access the local file share server, though external web browsing works fine. Please fix as soon as possible.",Network issue,medium,medium
+"During operating systems practical: Display shows severe red and green vertical glitch lines covering whole screen, unreadable text. Reported during practical hours.",Monitor issue,high,high
+"During morning lab session, Monitor flickers rapidly every few seconds causing severe eye strain to students. Student had to swap to a different workstation.",Monitor issue,medium,medium
+"Urgent report: Computer power button is stiff and needs to be pressed firmly to turn on, but it works fine once booted. Student had to swap to a different workstation.",Computer not starting,low,low
+Please check PC: Number pad keys on the right side do not work even when NumLock is turned on. Reported during practical hours.,Keyboard issue,medium,medium
+Please check PC: Very low internet bandwidth and high ping packet loss on this workstation compared to other PCs. Kindly resolve before the next lab class.,Network issue,medium,medium
+"Lab assistant noted that Ethernet cable jacket is slightly frayed near the wall jack, but network connection is fully functional. Inspection required.",Network issue,low,low
+"During morning lab session, Headphone jack on front panel is broken with a bent audio pin snapped inside the port. Reported during practical hours.",Other,low,low
+Observed issue: UPS backup battery not holding charge; PC immediately loses power during momentary voltage fluctuations. Student had to swap to a different workstation.,Other,high,high
+Urgent report: System experiences noticeable lag and delay when running multiple browser tabs and Python scripts. Needs technician review.,Slow computer,medium,medium
+Git command line tool throws SSL certificate validation failed when cloning repositories.,Software issue,medium,medium
+Monitor bezel has a small plastic scratch on the outer plastic border. Reported during practical hours.,Monitor issue,high,low
+Lab assistant noted that Google Chrome crashes when attempting to open college portal; Firefox works as temporary workaround. Happening repeatedly today.,Software issue,medium,high
+"In Lab 2 row 4, Caps Lock indicator LED does not light up, but uppercase switching works. Inspection required.",Keyboard issue,high,low
+Urgent report: Entire lab network switch is down. No PC in row A has ethernet internet connectivity. Online exam in 30 mins. Student had to swap to a different workstation.,Network issue,low,high
+During operating systems practical: Spacebar and Enter key do not register unless pressed very hard. Hinders coding lab work. Kindly resolve before the next lab class.,Keyboard issue,medium,medium
+Spilled water on keyboard earlier today. Keys feel sticky and several letters produce incorrect symbols.,Keyboard issue,medium,medium
+CPU is not powering on at all. Sparks were seen near the power cord connector. Entire row shut off.,Computer not starting,high,high
+"Multiple essential keys stuck down (Enter, Ctrl, Shift) preventing user from typing password to login.",Keyboard issue,medium,high
+UPS backup battery not holding charge; PC immediately loses power during momentary voltage fluctuations.,Other,high,high
+Student reported: Network speed drops to 10 Mbps instead of 1 Gbps due to bad patch cord. Inspection required.,Network issue,medium,medium
+"Ethernet cable jacket is slightly frayed near the wall jack, but network connection is fully functional.",Network issue,low,low
+Urgent report: Monitor power turns off automatically every 20 minutes and must be manually toggled back on. Inspection required.,Monitor issue,medium,low
+"Please check PC: Network cable RJ45 clip broken and port pins bent, completely disconnected from lab LAN. Needs technician review.",Network issue,medium,high
+Student reported: System experiences noticeable lag and delay when running multiple browser tabs and Python scripts.,Slow computer,medium,medium
+Number pad keys on the right side do not work even when NumLock is turned on.,Keyboard issue,medium,medium
+Student reported: Git command line tool throws SSL certificate validation failed when cloning repositories. Inspection required.,Software issue,low,low
+Faculty notice: Git command line tool throws SSL certificate validation failed when cloning repositories.,Software issue,medium,low
+"Urgent report: Monitor screen remains completely pitch black. Power LED blinks amber, no signal detected on HDMI or DisplayPort. Inspection required.",Monitor issue,low,low
+System is completely frozen and unresponsive. Task manager shows 100% disk usage and 99% CPU on idle.,Slow computer,high,high
+"In Lab 2 row 4, PC runs sluggishly when opening IDEs like Android Studio or VS Code. Takes 5 minutes to launch. Please fix as soon as possible.",Slow computer,medium,medium
+"In Lab 2 row 4, Projector in Lab A won't connect to lecturer workstation PC for class presentation. Reported during practical hours.",Other,high,high
+"During morning lab session, Antivirus background scan causes intermittent slowdowns during afternoon lab sessions. Kindly resolve before the next lab class.",Slow computer,high,high
+PC won't boot into Windows. Error: 'No bootable device found - insert boot disk and press any key'. Hard drive clicking loudly. Please fix as soon as possible.,Computer not starting,high,high
+"During morning lab session, Computer is slower than usual after recent Windows update. Takes longer to boot up in the morning. Inspection required.",Slow computer,medium,medium
+"During morning lab session, Mouse scroll wheel is broken and spins freely without scrolling documents or code files. Needs technician review.",Mouse issue,medium,medium
+Student reported: No display and computer will not power on at all. LED light on motherboard is red.,Computer not starting,medium,low
+Lab assistant noted that Operating system blue screen of death (BSOD) with error CRITICAL_PROCESS_DIED immediately after login. Please fix as soon as possible.,Software issue,medium,high
+Lab assistant noted that Very low internet bandwidth and high ping packet loss on this workstation compared to other PCs. Please fix as soon as possible.,Network issue,medium,medium
+"In Lab 2 row 4, VS Code extensions cannot be installed due to permission restrictions in student profile directory. Reported during practical hours.",Software issue,low,low
+"Urgent report: Computer power button is stiff and needs to be pressed firmly to turn on, but it works fine once booted. Inspection required.",Computer not starting,low,low
+"Letter key cap 'E' has worn off paint, but key types normally.",Keyboard issue,low,low
+Spacebar and Enter key do not register unless pressed very hard. Hinders coding lab work.,Keyboard issue,medium,medium
+"During morning lab session, High RAM usage causing minor freezes during Java programming sessions. Kindly resolve before the next lab class.",Slow computer,medium,medium
+Urgent report: Severe system lag making it impossible to conduct practical exams. Takes 25 minutes just to load desktop. Happening repeatedly today.,Slow computer,medium,high
+"Ethernet cable jacket is slightly frayed near the wall jack, but network connection is fully functional. Kindly resolve before the next lab class.",Network issue,low,low
+"In Lab 2 row 4, The computer is completely dead. Power button does nothing, no fan spin or lights. Burning smell noticed near PSU. Student had to swap to a different workstation.",Computer not starting,low,high
+"In Lab 2 row 4, High RAM usage causing minor freezes during Java programming sessions.",Slow computer,medium,medium
+"Mouse not detected at all, optical sensor laser is completely off, cannot navigate Windows.",Mouse issue,medium,medium
+Entire keyboard is completely dead and unrecognized by BIOS. USB ports fail to detect any input device.,Keyboard issue,high,high
+"During operating systems practical: Occasional lag spike when accessing remote repository on GitHub, but local network is stable. Happening repeatedly today.",Network issue,low,low
+"Student reported: Ethernet port on motherboard appears dead. No link lights, cannot connect to college intranet or gateway. Student had to swap to a different workstation.",Network issue,medium,high
+Urgent report: Network speed drops to 10 Mbps instead of 1 Gbps due to bad patch cord. Please fix as soon as possible.,Network issue,medium,medium
+"Slight delay when opening file explorer, but normal software operates smoothly.",Slow computer,low,low
+Lab assistant noted that Mouse cursor jumps erratically across screen or freezes every few seconds during GUI design work. Reported during practical hours.,Mouse issue,medium,medium
+Urgent report: Monitor flickers rapidly every few seconds causing severe eye strain to students. Needs technician review.,Monitor issue,medium,medium
+Urgent report: Ransomware or virus alert pop-up detected on screen. File extensions are being modified. Urgent isolation required. Inspection required.,Software issue,medium,high
+Lab assistant noted that Entire lab network switch is down. No PC in row A has ethernet internet connectivity. Online exam in 30 mins. Reported during practical hours.,Network issue,medium,high
+Urgent report: MATLAB license expired and throws licensing error 9 on startup. Students need it for tomorrow's lab. Please fix as soon as possible.,Software issue,medium,medium
+"In Lab 2 row 4, Dark mode setting resets to default light mode upon logging out. Happening repeatedly today.",Software issue,low,low
+"During morning lab session, Computer feels slightly sluggish after being on for 8 hours. Restart temporarily fixes it. Student had to swap to a different workstation.",Slow computer,low,low
+Observed issue: Corrupted registry causing system to fail during user profile service load. Inspection required.,Software issue,high,high
+"Lab assistant noted that Cannot access the local file share server, though external web browsing works fine. Needs technician review.",Network issue,medium,medium
+During operating systems practical: Operating system blue screen of death (BSOD) with error CRITICAL_PROCESS_DIED immediately after login. Student had to swap to a different workstation.,Software issue,medium,high
+Observed issue: Spilled water on keyboard earlier today. Keys feel sticky and several letters produce incorrect symbols. Please fix as soon as possible.,Keyboard issue,medium,high
+"During morning lab session, Keyboard USB cable is a bit short and stretched across desk, but works reliably. Please fix as soon as possible.",Keyboard issue,low,low
+Urgent report: Cannot reach database server or internet. DNS lookup failing across all systems in Lab B. Needs technician review.,Network issue,high,high
+"In Lab 2 row 4, Dark mode setting resets to default light mode upon logging out. Needs technician review.",Software issue,low,low
+"In Lab 2 row 4, Very low internet bandwidth and high ping packet loss on this workstation compared to other PCs.",Network issue,medium,medium
+"Urgent report: Mouse left click button is permanently stuck down, registering non-stop double clicks and dragging windows uncontrollably. Kindly resolve before the next lab class.",Mouse issue,medium,medium
+"Faculty notice: Multiple essential keys stuck down (Enter, Ctrl, Shift) preventing user from typing password to login. Student had to swap to a different workstation.",Keyboard issue,medium,high
+"In Lab 2 row 4, PC takes 10 to 15 tries pressing power button to start up. Suspect loose power switch. Kindly resolve before the next lab class.",Computer not starting,medium,medium
+Observed issue: Computer is slower than usual after recent Windows update. Takes longer to boot up in the morning. Reported during practical hours.,Slow computer,medium,medium
+Antivirus background scan causes intermittent slowdowns during afternoon lab sessions.,Slow computer,medium,medium
+Please check PC: PC takes 10 to 15 tries pressing power button to start up. Suspect loose power switch. Please fix as soon as possible.,Computer not starting,medium,medium
+Screen has a strong yellow tint / color discoloration due to loose VGA/HDMI cable pin.,Monitor issue,medium,medium
+"In Lab 2 row 4, Network speed drops to 10 Mbps instead of 1 Gbps due to bad patch cord. Happening repeatedly today.",Network issue,medium,medium
+"Urgent report: Keyboard USB cable is a bit short and stretched across desk, but works reliably. Reported during practical hours.",Keyboard issue,low,low
+Urgent report: CPU is not powering on at all. Sparks were seen near the power cord connector. Entire row shut off. Needs technician review.,Computer not starting,medium,high
+"During morning lab session, Computer shuts down randomly during startup or restarts unexpectedly after 10 minutes.",Computer not starting,medium,medium

@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    /* Prevent white flash on load */
+    background-color: #020617; /* slate-950 */
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-100 min-h-screen;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Prevent horizontal scroll on mobile */
+  #root {
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: #0f172a; }
+::-webkit-scrollbar-thumb  { background: #334155; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+/* ── Animations ────────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0);      }
+}
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+
+.animate-fadeIn     { animation: fadeIn     0.2s  ease-out forwards; }
+.animate-slideUp    { animation: slideUp    0.22s ease-out forwards; }
+.animate-slideInLeft{ animation: slideInLeft 0.2s ease-out forwards; }
+.animate-pulse-slow { animation: pulse-slow  2s   ease-in-out infinite; }
+
+/* ── Table rows ────────────────────────────────────────────────────────── */
+.table-row-hover:hover { background: rgba(51, 65, 85, 0.4); }
+
+/* ── Responsive helper: prevent text overflow in narrow columns ─────────── */
+.truncate-cell { max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ── Card hover lift ───────────────────────────────────────────────────── */
+.card-hover {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+}
+
+/* ── Mobile: ensure full-width tables scroll horizontally ─────────────── */
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
