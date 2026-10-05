@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: smartlab-backend
+    runtime: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://postgres.vhhvfgkhesbxjmymriar:[vimalraj@123]@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres
+      - key: SECRET_KEY
+        value: sb_publishable_5I0zHPTP2fZDRruLgkrOhQ_JSLlAWFV
+      - key: ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: 1440

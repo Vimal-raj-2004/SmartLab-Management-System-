@@ -28,6 +28,8 @@ export const Login = () => {
         setError('Cannot connect to backend server. Please ensure FastAPI is running on port 8000.');
       } else if (err.response.status === 504 || err.response.status === 502) {
         setError('Backend server gateway timeout or unavailable. Please check if uvicorn is running.');
+      } else if (err.response.status === 404 || typeof err.response.data === 'string') {
+        setError('Backend API server not found (404). Netlify only hosts the frontend (React). The FastAPI backend must be deployed (e.g. Render) or tested locally on http://localhost:5173.');
       } else {
         setError(
           err.response?.data?.detail ||
