@@ -118,8 +118,8 @@ test.describe('Modal Popups Responsiveness & Close Button Visibility', () => {
 
   test('Mobile: Complaint View modal remains fully bounded and scrollable on small mobile screen', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
-    await loginAs(page, 'student@lab.edu', 'student123');
-    await page.goto('/student/complaints');
+    await loginAs(page, 'faculty@lab.edu', 'faculty123');
+    await page.goto('/faculty/complaints');
     await page.waitForLoadState('domcontentloaded');
 
     await page.waitForSelector('main h1', { timeout: 15000 });
