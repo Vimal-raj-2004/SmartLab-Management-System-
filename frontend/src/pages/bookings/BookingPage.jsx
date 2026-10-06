@@ -2,10 +2,16 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   CalendarDays, Clock, Users, FlaskConical,
-  AlertCircle, CheckCircle2, ArrowLeft, Info, Calendar
+  AlertCircle, CheckCircle2, ArrowLeft, Info, Calendar, X
 } from 'lucide-react';
 import { bookingService, labService } from '../../services/api';
 import StatusBadge, { defaultBookingStatus } from '../../components/StatusBadge';
+import {
+  formatTime12h,
+  formatTimeRange12h,
+  isSlotInPast,
+  getSmartDefaultTimes
+} from '../../utils/timeFormat';
 
 export default function BookingPage() {
   const navigate = useNavigate();
@@ -15,14 +21,22 @@ export default function BookingPage() {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
+  const defaultTimes = getSmartDefaultTimes();
   // Form State
   const [formData, setFormData] = useState({
     lab_id: '',
     booking_date: new Date().toISOString().split('T')[0],
-    start_time: '09:00',
-    end_time: '11:00',
+    start_time: defaultTimes.start,
+    end_time: defaultTimes.end,
     number_of_students: 20,
     purpose: '',
+  });
+
+  // Modal alert for expired / past time slots
+  const [pastTimeModal, setPastTimeModal] = useState({
+    open: false,
+    slotText: '',
+    currentTimeText: '',
   });
 
   // Preview schedule for the selected lab & date
@@ -109,6 +123,26 @@ export default function BookingPage() {
     }
     if (selectedLab && Number(formData.number_of_students) > selectedLab.capacity) {
       setError(`Number of students cannot exceed lab capacity of ${selectedLab.capacity}.`);
+      return;
+    }
+
+    // Past time slot validation for today's reservations
+    if (isSlotInPast(formData.booking_date, formData.start_time, formData.end_time)) {
+      const now = new Date();
+      let nowHour = now.getHours();
+      const ampm = nowHour >= 12 ? 'PM' : 'AM';
+      nowHour = nowHour % 12 || 12;
+      const nowMin = String(now.getMinutes()).padStart(2, '0');
+      const curTime = `${String(nowHour).padStart(2, '0')}:${nowMin} ${ampm}`;
+      const slotText = `${formatTime12h(formData.start_time)} – ${formatTime12h(formData.end_time)}`;
+      const msg = `Cannot book a past time slot! The selected slot (${slotText}) has already ended today (Current time is ${curTime}). Please choose an upcoming time slot.`;
+
+      setPastTimeModal({
+        open: true,
+        slotText,
+        currentTimeText: curTime,
+      });
+      setError(msg);
       return;
     }
 
@@ -255,9 +289,16 @@ export default function BookingPage() {
             {/* Time window */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                  Start Time *
-                </label>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300">
+                    Start Time *
+                  </label>
+                  {formData.start_time && (
+                    <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                      {formatTime12h(formData.start_time)}
+                    </span>
+                  )}
+                </div>
                 <input
                   type="time"
                   name="start_time"
@@ -269,9 +310,16 @@ export default function BookingPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                  End Time *
-                </label>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300">
+                    End Time *
+                  </label>
+                  {formData.end_time && (
+                    <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                      {formatTime12h(formData.end_time)}
+                    </span>
+                  )}
+                </div>
                 <input
                   type="time"
                   name="end_time"
@@ -281,6 +329,17 @@ export default function BookingPage() {
                   className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-indigo-500 transition-colors"
                 />
               </div>
+
+              {/* Inline warning if slot has already expired today */}
+              {isSlotInPast(formData.booking_date, formData.start_time, formData.end_time) && (
+                <div className="col-span-1 sm:col-span-2 p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-start gap-2.5 text-xs text-rose-300">
+                  <AlertCircle className="w-4 h-4 text-rose-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-rose-200">Past Time Slot Detected:</span>{' '}
+                    The selected time ({formatTime12h(formData.start_time)} – {formatTime12h(formData.end_time)}) has already passed today. Please pick an upcoming time.
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Purpose */}
@@ -365,7 +424,7 @@ export default function BookingPage() {
                     <div className="flex items-center justify-between text-xs">
                       <span className="font-semibold text-indigo-300 flex items-center gap-1">
                         <Clock className="w-3.5 h-3.5" />
-                        {slot.start_time.slice(0, 5)} – {slot.end_time.slice(0, 5)}
+                        {formatTimeRange12h(slot.start_time, slot.end_time)}
                       </span>
                       <StatusBadge value={slot.status} statusMap={defaultBookingStatus} />
                     </div>
@@ -383,6 +442,59 @@ export default function BookingPage() {
           </div>
         </div>
       </div>
+
+      {/* ─── Past Time Slot Warning Modal Popup ────────────────────────── */}
+      {pastTimeModal.open && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-slate-900 border border-rose-500/40 rounded-2xl p-6 max-w-md w-full shadow-2xl shadow-rose-950/60 space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-rose-500/20 border border-rose-500/30 flex items-center justify-center text-rose-400 flex-shrink-0">
+                  <AlertCircle className="w-7 h-7" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white tracking-tight">Time Slot Already Passed</h3>
+                  <p className="text-xs text-rose-300">Cannot reserve an expired session</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setPastTimeModal({ open: false, slotText: '', currentTimeText: '' })}
+                className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700/60 space-y-2 text-xs">
+              <div className="flex items-center justify-between">
+                <span className="text-slate-400">Selected Slot:</span>
+                <span className="font-bold text-rose-300 bg-rose-500/20 px-2 py-0.5 rounded border border-rose-500/30">
+                  {pastTimeModal.slotText} (EXPIRED)
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-slate-400">Current Local Time:</span>
+                <span className="font-semibold text-indigo-300 bg-indigo-500/20 px-2 py-0.5 rounded border border-indigo-500/30">
+                  {pastTimeModal.currentTimeText}
+                </span>
+              </div>
+            </div>
+
+            <p className="text-xs text-slate-300 leading-relaxed">
+              The time window you selected has already finished for today. Laboratory reservations can only be booked for upcoming future hours.
+            </p>
+
+            <button
+              type="button"
+              onClick={() => setPastTimeModal({ open: false, slotText: '', currentTimeText: '' })}
+              className="w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition-all shadow-lg shadow-indigo-900/40"
+            >
+              Got It — Select Upcoming Time
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

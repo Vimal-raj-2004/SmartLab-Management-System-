@@ -1,9 +1,23 @@
 import math
-from datetime import date, datetime, time as time_type
+from datetime import date, datetime, time as time_type, timedelta, timezone
 from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session, joinedload
 from sqlalchemy import func, and_, or_
+
+# Indian Standard Time (IST UTC+5:30) for laboratory scheduling
+IST = timezone(timedelta(hours=5, minutes=30))
+
+def get_current_ist_datetime() -> datetime:
+    return datetime.now(IST)
+
+def format_time_12h(t: time_type) -> str:
+    if not t:
+        return ""
+    h = t.hour
+    ampm = "PM" if h >= 12 else "AM"
+    h12 = h % 12 or 12
+    return f"{h12:02d}:{t.minute:02d} {ampm}"
 
 from app.database import get_db
 from app.models.user import User, UserRole
@@ -52,7 +66,7 @@ def _auto_complete_past_bookings(db: Session):
     Wrapped in try/except with rollback so any database blip never breaks the calling endpoint.
     """
     try:
-        now = datetime.now()
+        now = get_current_ist_datetime()
         current_date = now.date()
         current_time = now.time()
 
@@ -125,9 +139,27 @@ def create_booking(
             detail=f"Number of students ({payload.number_of_students}) exceeds lab capacity ({lab.capacity})."
         )
 
+    now_ist = get_current_ist_datetime()
+    today_ist = now_ist.date()
+    current_time_ist = now_ist.time()
+
     # Date must not be in the past
-    if payload.booking_date < date.today():
+    if payload.booking_date < today_ist:
         raise HTTPException(status_code=422, detail="Booking date cannot be in the past.")
+
+    # End time must be later than start time
+    if payload.end_time <= payload.start_time:
+        raise HTTPException(status_code=422, detail="End time must be later than start time.")
+
+    # Prevent booking past time slots on today's date
+    if payload.booking_date == today_ist:
+        if payload.start_time <= current_time_ist or payload.end_time <= current_time_ist:
+            slot_str = f"{format_time_12h(payload.start_time)} – {format_time_12h(payload.end_time)}"
+            cur_str = format_time_12h(current_time_ist)
+            raise HTTPException(
+                status_code=422,
+                detail=f"Cannot book a past time slot! The selected slot ({slot_str}) has already passed today (Current time: {cur_str}). Please choose an upcoming future time slot."
+            )
 
     # Use transaction to prevent race conditions
     try:
