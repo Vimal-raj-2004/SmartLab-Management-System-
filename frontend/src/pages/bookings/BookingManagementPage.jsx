@@ -54,6 +54,29 @@ export default function BookingManagementPage() {
     fetchBookings();
   }, [selectedLab, selectedDate, selectedStatus]);
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        if (rejectingBooking) {
+          setRejectingBooking(null);
+          setRejectionReason('');
+        } else if (selectedBooking) {
+          setSelectedBooking(null);
+        }
+      }
+    };
+    if (rejectingBooking || selectedBooking) {
+      window.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [rejectingBooking, selectedBooking]);
+
   const fetchLabs = async () => {
     try {
       const res = await labService.list({ per_page: 50 });
@@ -350,9 +373,17 @@ export default function BookingManagementPage() {
 
       {/* Reject Modal */}
       {rejectingBooking && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-md p-6 shadow-2xl space-y-4">
-            <h3 className="text-lg font-bold text-white flex items-center gap-2">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-sm animate-fadeIn overflow-y-auto">
+          <div
+            className="fixed inset-0"
+            onClick={() => {
+              setRejectingBooking(null);
+              setRejectionReason('');
+            }}
+            aria-hidden="true"
+          />
+          <div className="relative w-full max-w-md max-h-[calc(100dvh-1.5rem)] flex flex-col bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl z-10 overflow-hidden my-auto p-5 sm:p-6 space-y-4">
+            <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
               <XCircle className="w-5 h-5 text-red-400" />
               Reject Booking {rejectingBooking.booking_code}
             </h3>
@@ -370,6 +401,7 @@ export default function BookingManagementPage() {
 
             <div className="flex items-center justify-end gap-3 pt-2">
               <button
+                type="button"
                 onClick={() => {
                   setRejectingBooking(null);
                   setRejectionReason('');
@@ -379,6 +411,7 @@ export default function BookingManagementPage() {
                 Cancel
               </button>
               <button
+                type="button"
                 onClick={() => handleStatusChange(rejectingBooking.id, 'rejected', rejectionReason)}
                 disabled={!rejectionReason.trim() || actionLoading}
                 className="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
@@ -392,23 +425,33 @@ export default function BookingManagementPage() {
 
       {/* View Details Modal */}
       {selectedBooking && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-lg p-6 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-sm animate-fadeIn overflow-y-auto">
+          <div
+            className="fixed inset-0"
+            onClick={() => setSelectedBooking(null)}
+            aria-hidden="true"
+          />
+          <div className="relative w-full max-w-lg max-h-[calc(100dvh-1.5rem)] sm:max-h-[88vh] flex flex-col bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl z-10 overflow-hidden my-auto">
+            {/* Sticky Header */}
+            <div className="flex-shrink-0 sticky top-0 bg-slate-900 z-10 flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 border-b border-slate-800">
               <div>
                 <span className="font-mono text-xs text-indigo-400 font-bold">{selectedBooking.booking_code}</span>
-                <h3 className="text-lg font-bold text-white">Booking Details</h3>
+                <h3 className="text-base sm:text-lg font-bold text-white">Booking Details</h3>
               </div>
               <button
+                type="button"
                 onClick={() => setSelectedBooking(null)}
-                className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800"
+                aria-label="Close booking details"
+                title="Close"
+                className="p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 ✕
               </button>
             </div>
 
-            <div className="space-y-3 text-sm">
-              <div className="grid grid-cols-2 gap-3">
+            {/* Scrollable Body */}
+            <div className="flex-1 overflow-y-auto overscroll-contain px-5 sm:px-6 py-4 sm:py-5 space-y-3.5 text-sm min-h-0">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
                   <span className="text-xs text-slate-400 block mb-1">Faculty</span>
                   <span className="font-semibold text-slate-200">{selectedBooking.faculty?.name}</span>
@@ -445,10 +488,12 @@ export default function BookingManagementPage() {
               )}
             </div>
 
-            <div className="pt-2 flex items-center justify-end gap-3 border-t border-slate-800">
+            {/* Sticky Footer */}
+            <div className="flex-shrink-0 sticky bottom-0 bg-slate-900 z-10 px-5 sm:px-6 py-3 border-t border-slate-800 flex items-center justify-end">
               <button
+                type="button"
                 onClick={() => setSelectedBooking(null)}
-                className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium"
+                className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 Close
               </button>

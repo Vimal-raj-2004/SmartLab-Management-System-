@@ -67,6 +67,24 @@ export default function MyComplaintsPage() {
     setPage(1);
   }, [search, filterStatus]);
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && viewModalOpen) {
+        setViewModalOpen(false);
+      }
+    };
+    if (viewModalOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [viewModalOpen]);
+
   const openView = (c) => {
     setSelectedComplaint(c);
     setViewModalOpen(true);
@@ -294,21 +312,34 @@ export default function MyComplaintsPage() {
 
       {/* Details View Modal */}
       {selectedComplaint && viewModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-200">
-            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-sm overflow-y-auto">
+          {/* Backdrop Click Layer */}
+          <div
+            className="fixed inset-0"
+            onClick={() => setViewModalOpen(false)}
+            aria-hidden="true"
+          />
+
+          {/* Modal Container */}
+          <div className="relative w-full max-w-lg max-h-[calc(100dvh-1.5rem)] sm:max-h-[88vh] flex flex-col bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl z-10 overflow-hidden my-auto animate-in fade-in zoom-in-95 duration-200">
+            {/* Header - Always visible and sticky */}
+            <div className="flex-shrink-0 sticky top-0 bg-slate-900 z-10 flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 border-b border-slate-800">
               <h3 className="font-semibold text-white text-base">
                 Complaint {selectedComplaint.complaint_code}
               </h3>
               <button
+                type="button"
                 onClick={() => setViewModalOpen(false)}
-                className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                aria-label="Close complaint details"
+                title="Close"
+                className="p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="p-6 space-y-4 text-sm text-slate-300">
+            {/* Scrollable Body */}
+            <div className="flex-1 overflow-y-auto overscroll-contain px-5 sm:px-6 py-4 sm:py-5 space-y-4 text-sm text-slate-300 min-h-0">
               <div className="flex items-center justify-between p-3 rounded-xl bg-slate-800/60 border border-slate-700/50">
                 <span className="text-xs font-semibold uppercase text-slate-400">Current Status</span>
                 <StatusBadge value={selectedComplaint.status} statusMap={defaultComplaintStatus} />
@@ -363,7 +394,7 @@ export default function MyComplaintsPage() {
                 )}
               </dl>
 
-              {/* Resolution notification banner for student */}
+              {/* Resolution notification banner */}
               {(selectedComplaint.status === 'resolved' || selectedComplaint.status === 'closed') && (
                 <div className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 space-y-2">
                   <div className="flex items-center gap-2">
@@ -394,10 +425,12 @@ export default function MyComplaintsPage() {
               </div>
             </div>
 
-            <div className="px-6 py-3 bg-slate-800/40 border-t border-slate-800 flex justify-end">
+            {/* Footer - Always visible and sticky */}
+            <div className="flex-shrink-0 sticky bottom-0 bg-slate-900 z-10 px-5 sm:px-6 py-3 bg-slate-800/40 border-t border-slate-800 flex justify-end">
               <button
+                type="button"
                 onClick={() => setViewModalOpen(false)}
-                className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-medium transition-colors"
+                className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 Close
               </button>

@@ -18,22 +18,33 @@ export default function ConfirmDialog({
   isLoading = false,
 }) {
   useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && onClose && !isLoading) {
+        onClose();
+      }
+    };
+
     if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
-    return () => { document.body.style.overflow = ''; };
-  }, [isOpen]);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [isOpen, onClose, isLoading]);
 
   if (!isOpen) return null;
 
   const buttonLabel = confirmText || confirmLabel;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <div className="fixed inset-0" onClick={onClose} aria-hidden="true" />
-      <div className="relative w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl z-10 overflow-hidden p-6 space-y-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-sm overflow-y-auto">
+      <div className="fixed inset-0" onClick={isLoading ? undefined : onClose} aria-hidden="true" />
+      <div className="relative w-full max-w-md max-h-[calc(100dvh-1.5rem)] flex flex-col bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl z-10 overflow-hidden p-5 sm:p-6 space-y-4 my-auto">
         <div className="flex items-start gap-4">
           <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0 text-amber-400">
             <AlertTriangle className="w-5 h-5" />

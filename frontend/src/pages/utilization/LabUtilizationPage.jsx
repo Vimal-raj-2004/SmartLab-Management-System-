@@ -44,6 +44,24 @@ export default function LabUtilizationPage() {
     loadAllData();
   }, [filterLab, filterLevel]);
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && modalOpen) {
+        setModalOpen(false);
+      }
+    };
+    if (modalOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [modalOpen]);
+
   // Run live prediction when calculator inputs change
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -728,105 +746,117 @@ export default function LabUtilizationPage() {
 
       {/* ── Modal: Record New Session ─────────────────────────────────────── */}
       {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-md p-6 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-sm animate-fadeIn overflow-y-auto">
+          <div
+            className="fixed inset-0"
+            onClick={() => setModalOpen(false)}
+            aria-hidden="true"
+          />
+          <div className="relative w-full max-w-md max-h-[calc(100dvh-1.5rem)] sm:max-h-[88vh] flex flex-col bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl z-10 overflow-hidden my-auto">
+            {/* Sticky Header */}
+            <div className="flex-shrink-0 sticky top-0 bg-slate-900 z-10 flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 border-b border-slate-800">
               <h3 className="text-base font-bold text-white flex items-center gap-2">
                 <PlusCircle className="w-4 h-4 text-indigo-400" />
                 Record Lab Usage Session
               </h3>
               <button
+                type="button"
                 onClick={() => setModalOpen(false)}
-                className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800"
+                aria-label="Close session form"
+                title="Close"
+                className="p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 ✕
               </button>
             </div>
 
-            <form onSubmit={handleCreateSession} className="space-y-3.5 text-xs">
-              {/* Lab Select */}
-              <div>
-                <label className="block text-slate-300 mb-1 font-medium">Select Laboratory *</label>
-                <select
-                  required
-                  value={newSession.lab_id}
-                  onChange={(e) => setNewSession(prev => ({ ...prev, lab_id: e.target.value }))}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
-                >
-                  <option value="">-- Choose a Lab --</option>
-                  {labs.map(l => (
-                    <option key={l.id} value={l.id}>{l.lab_name} (Capacity: {l.capacity})</option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Date */}
-              <div>
-                <label className="block text-slate-300 mb-1 font-medium">Session Date *</label>
-                <input
-                  type="date"
-                  required
-                  value={newSession.session_date}
-                  onChange={(e) => setNewSession(prev => ({ ...prev, session_date: e.target.value }))}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
-                />
-              </div>
-
-              {/* Students & PCs Grid */}
-              <div className="grid grid-cols-2 gap-3">
+            <form onSubmit={handleCreateSession} className="flex-1 flex flex-col min-h-0 overflow-hidden">
+              <div className="flex-1 overflow-y-auto overscroll-contain px-5 sm:px-6 py-4 space-y-3.5 text-xs min-h-0">
+                {/* Lab Select */}
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Students Present *</label>
+                  <label className="block text-slate-300 mb-1 font-medium">Select Laboratory *</label>
+                  <select
+                    required
+                    value={newSession.lab_id}
+                    onChange={(e) => setNewSession(prev => ({ ...prev, lab_id: e.target.value }))}
+                    className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                  >
+                    <option value="">-- Choose a Lab --</option>
+                    {labs.map(l => (
+                      <option key={l.id} value={l.id}>{l.lab_name} (Capacity: {l.capacity})</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Date */}
+                <div>
+                  <label className="block text-slate-300 mb-1 font-medium">Session Date *</label>
+                  <input
+                    type="date"
+                    required
+                    value={newSession.session_date}
+                    onChange={(e) => setNewSession(prev => ({ ...prev, session_date: e.target.value }))}
+                    className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                  />
+                </div>
+
+                {/* Students & PCs Grid */}
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-slate-300 mb-1 font-medium">Students Present *</label>
+                    <input
+                      type="number"
+                      min="1"
+                      max="100"
+                      required
+                      value={newSession.number_of_students}
+                      onChange={(e) => setNewSession(prev => ({ ...prev, number_of_students: e.target.value }))}
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-500 font-mono"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-slate-300 mb-1 font-medium">PCs Used *</label>
+                    <input
+                      type="number"
+                      min="1"
+                      max="100"
+                      required
+                      value={newSession.pcs_used}
+                      onChange={(e) => setNewSession(prev => ({ ...prev, pcs_used: e.target.value }))}
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-500 font-mono"
+                    />
+                  </div>
+                </div>
+
+                {/* Duration */}
+                <div>
+                  <label className="block text-slate-300 mb-1 font-medium">Duration (Minutes) *</label>
                   <input
                     type="number"
-                    min="1"
-                    max="100"
+                    min="15"
+                    max="360"
+                    step="15"
                     required
-                    value={newSession.number_of_students}
-                    onChange={(e) => setNewSession(prev => ({ ...prev, number_of_students: e.target.value }))}
+                    value={newSession.session_duration_minutes}
+                    onChange={(e) => setNewSession(prev => ({ ...prev, session_duration_minutes: e.target.value }))}
                     className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-500 font-mono"
                   />
                 </div>
-                <div>
-                  <label className="block text-slate-300 mb-1 font-medium">PCs Used *</label>
-                  <input
-                    type="number"
-                    min="1"
-                    max="100"
-                    required
-                    value={newSession.pcs_used}
-                    onChange={(e) => setNewSession(prev => ({ ...prev, pcs_used: e.target.value }))}
-                    className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-500 font-mono"
-                  />
-                </div>
               </div>
 
-              {/* Duration */}
-              <div>
-                <label className="block text-slate-300 mb-1 font-medium">Duration (Minutes) *</label>
-                <input
-                  type="number"
-                  min="15"
-                  max="360"
-                  step="15"
-                  required
-                  value={newSession.session_duration_minutes}
-                  onChange={(e) => setNewSession(prev => ({ ...prev, session_duration_minutes: e.target.value }))}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-500 font-mono"
-                />
-              </div>
-
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-end gap-2.5">
+              {/* Sticky Footer */}
+              <div className="flex-shrink-0 sticky bottom-0 bg-slate-900 z-10 px-5 sm:px-6 py-3 border-t border-slate-800 flex items-center justify-end gap-2.5">
                 <button
                   type="button"
                   onClick={() => setModalOpen(false)}
-                  className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium"
+                  className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-md disabled:opacity-50"
+                  className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-md disabled:opacity-50 transition-colors"
                 >
                   {submitting ? 'Saving & Classifying...' : 'Save & Classify'}
                 </button>

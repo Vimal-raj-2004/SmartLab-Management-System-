@@ -74,6 +74,24 @@ export default function BookingPage() {
     }
   }, [formData.lab_id, formData.booking_date]);
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && pastTimeModal.open) {
+        setPastTimeModal({ open: false, slotText: '', currentTimeText: '' });
+      }
+    };
+    if (pastTimeModal.open) {
+      window.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [pastTimeModal.open]);
+
   const fetchLabSchedule = async (labId, dateStr) => {
     try {
       setLoadingSchedule(true);
@@ -445,22 +463,29 @@ export default function BookingPage() {
 
       {/* ─── Past Time Slot Warning Modal Popup ────────────────────────── */}
       {pastTimeModal.open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-slate-900 border border-rose-500/40 rounded-2xl p-6 max-w-md w-full shadow-2xl shadow-rose-950/60 space-y-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-sm animate-in fade-in duration-200 overflow-y-auto">
+          <div
+            className="fixed inset-0"
+            onClick={() => setPastTimeModal({ open: false, slotText: '', currentTimeText: '' })}
+            aria-hidden="true"
+          />
+          <div className="relative w-full max-w-md max-h-[calc(100dvh-1.5rem)] flex flex-col bg-slate-900 border border-rose-500/40 rounded-2xl p-5 sm:p-6 shadow-2xl shadow-rose-950/60 space-y-4 my-auto overflow-y-auto">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-rose-500/20 border border-rose-500/30 flex items-center justify-center text-rose-400 flex-shrink-0">
-                  <AlertCircle className="w-7 h-7" />
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-rose-500/20 border border-rose-500/30 flex items-center justify-center text-rose-400 flex-shrink-0">
+                  <AlertCircle className="w-6 h-6 sm:w-7 sm:h-7" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-white tracking-tight">Time Slot Already Passed</h3>
+                  <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">Time Slot Already Passed</h3>
                   <p className="text-xs text-rose-300">Cannot reserve an expired session</p>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={() => setPastTimeModal({ open: false, slotText: '', currentTimeText: '' })}
-                className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                aria-label="Close warning modal"
+                title="Close"
+                className="p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 <X className="w-5 h-5" />
               </button>

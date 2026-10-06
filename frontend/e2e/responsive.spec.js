@@ -63,3 +63,86 @@ test.describe('Mobile Responsiveness & Viewport Tests', () => {
     expect(isOverflowing).toBe(false);
   });
 });
+
+test.describe('Modal Popups Responsiveness & Close Button Visibility', () => {
+  // Test on typical laptop viewport with constrained height (similar to 1366x768 with browser tabs & OS taskbar)
+  test.use({ viewport: { width: 1366, height: 600 } });
+
+  test('Faculty Complaints: View modal stays within viewport and close button is fully visible', async ({ page }) => {
+    await loginAs(page, 'faculty@lab.edu', 'faculty123');
+    await page.goto('/faculty/complaints');
+    await page.waitForLoadState('domcontentloaded');
+
+    await page.waitForSelector('main h1', { timeout: 15000 });
+    await expect(page.locator('main h1')).toContainText(/My Submitted Complaints/i);
+
+    // Look for view details button in table or mobile cards
+    const viewBtn = page.locator('button[title="View Details"], button:has-text("View Details")').first();
+    const hasComplaints = await viewBtn.isVisible().catch(() => false);
+
+    if (hasComplaints) {
+      await viewBtn.click();
+
+      // Wait for modal to appear
+      const modal = page.locator('.fixed.inset-0.z-50');
+      await expect(modal).toBeVisible();
+
+      // Close button (X icon in sticky header)
+      const closeXBtn = modal.locator('button[aria-label="Close complaint details"], button[title="Close"]').first();
+      await expect(closeXBtn).toBeVisible();
+
+      // Verify close button is inside viewport bounds (not pushed off-screen)
+      const box = await closeXBtn.boundingBox();
+      expect(box).not.toBeNull();
+      expect(box.y).toBeGreaterThanOrEqual(0);
+      expect(box.y + box.height).toBeLessThanOrEqual(600);
+
+      // Verify footer close button is also visible and within viewport
+      const footerCloseBtn = modal.locator('button:has-text("Close")');
+      await expect(footerCloseBtn).toBeVisible();
+      const footerBox = await footerCloseBtn.boundingBox();
+      expect(footerBox).not.toBeNull();
+      expect(footerBox.y + footerBox.height).toBeLessThanOrEqual(600);
+
+      // Test closing via X button
+      await closeXBtn.click();
+      await expect(modal).toBeHidden();
+
+      // Re-open and test closing via Escape key
+      await viewBtn.click();
+      await expect(modal).toBeVisible();
+      await page.keyboard.press('Escape');
+      await expect(modal).toBeHidden();
+    }
+  });
+
+  test('Mobile: Complaint View modal remains fully bounded and scrollable on small mobile screen', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 667 });
+    await loginAs(page, 'student@lab.edu', 'student123');
+    await page.goto('/student/complaints');
+    await page.waitForLoadState('domcontentloaded');
+
+    await page.waitForSelector('main h1', { timeout: 15000 });
+    const viewBtn = page.locator('button:has-text("View Details")').first();
+    const hasComplaints = await viewBtn.isVisible().catch(() => false);
+
+    if (hasComplaints) {
+      await viewBtn.click();
+      const modal = page.locator('.fixed.inset-0.z-50');
+      await expect(modal).toBeVisible();
+
+      const closeXBtn = modal.locator('button[aria-label="Close complaint details"], button[title="Close"]').first();
+      await expect(closeXBtn).toBeVisible();
+
+      const box = await closeXBtn.boundingBox();
+      expect(box).not.toBeNull();
+      expect(box.y).toBeGreaterThanOrEqual(0);
+      expect(box.y + box.height).toBeLessThanOrEqual(667);
+
+      // Close modal
+      await closeXBtn.click();
+      await expect(modal).toBeHidden();
+    }
+  });
+});
+
