@@ -138,7 +138,7 @@ if __name__ == "__main__":
     import socket
     parser = argparse.ArgumentParser(description="PC Monitoring Agent")
     parser.add_argument("--pc-id", type=str, default="AML-PC-001", help="Unique ID for this PC (default: AML-PC-001)")
-    parser.add_argument("--server", type=str, default="http://localhost:8000", help="Backend API server URL")
+    parser.add_argument("--server", type=str, default="https://smartlab-management-system.onrender.com", help="Backend API server URL")
     parser.add_argument("--interval", type=int, default=30, help="Collection interval in seconds (default: 30)")
     parser.add_argument("--once", action="store_true", help="Run a single collection cycle and exit")
     
