@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Monitor, Lock, Mail, AlertCircle, ArrowRight, Sparkles, Eye, EyeOff } from 'lucide-react';
+import { Monitor, Lock, Mail, AlertCircle, ArrowRight, Sparkles, Eye, EyeOff, RefreshCw, Server } from 'lucide-react';
+import api from '../services/api';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
@@ -9,27 +10,65 @@ export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState('');
+  const timerRef = useRef(null);
 
   const { login, getRoleDashboardPath } = useAuth();
   const navigate = useNavigate();
 
+  // Pre-warm the backend on initial page load so Render starts waking up immediately
+  useEffect(() => {
+    api.get('/health').catch(() => {
+      // Quietly ignore; this ping is strictly to wake up the free Render instance in the background
+    });
+  }, []);
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     setError('');
     setIsLoading(true);
+    setStatusMessage('Authenticating...');
+
+    // If cloud response takes longer than 3.5 seconds, notify the user about Render free-tier cold start
+    timerRef.current = setTimeout(() => {
+      setStatusMessage('Waking up cloud backend (Render free tier takes ~45s on cold start)...');
+    }, 3500);
 
     try {
       const userInfo = await login(email, password);
       const targetPath = getRoleDashboardPath(userInfo.role);
       navigate(targetPath, { replace: true });
     } catch (err) {
-      console.error(err);
+      console.error('Login request failed:', err);
+      const isLocal =
+        typeof window !== 'undefined' &&
+        (window.location.hostname === 'localhost' ||
+         window.location.hostname === '127.0.0.1');
+
       if (!err.response) {
-        setError('Cannot connect to backend server. Please ensure FastAPI is running on port 8000.');
+        if (err.code === 'ECONNABORTED' || err.message?.includes('timeout')) {
+          setError(
+            isLocal
+              ? 'Request timed out. Please ensure FastAPI is running on port 8000.'
+              : 'Connection timed out. The Render cloud server was sleeping and is still starting up. Please click "Retry Login" below.'
+          );
+        } else {
+          setError(
+            isLocal
+              ? 'Cannot connect to backend server. Please ensure FastAPI is running on port 8000.'
+              : 'Unable to connect to cloud backend. The Render server may be waking up from sleep. Please wait a moment and tap "Retry Login".'
+          );
+        }
       } else if (err.response.status === 504 || err.response.status === 502) {
-        setError('Backend server gateway timeout or unavailable. Please check if uvicorn is running.');
+        setError(
+          isLocal
+            ? 'Backend server gateway timeout or unavailable. Please check if uvicorn is running.'
+            : 'Gateway timeout (504): Cloud server is currently starting up. Please click "Retry Login" in a few seconds.'
+        );
       } else if (err.response.status === 404 || typeof err.response.data === 'string') {
-        setError('Backend API server not found (404). Netlify only hosts the frontend (React). The FastAPI backend must be deployed (e.g. Render) or tested locally on http://localhost:5173.');
+        setError(
+          'Backend API endpoint not found (404). Please ensure the backend is running and properly deployed.'
+        );
       } else {
         setError(
           err.response?.data?.detail ||
@@ -37,7 +76,11 @@ export const Login = () => {
         );
       }
     } finally {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
       setIsLoading(false);
+      setStatusMessage('');
     }
   };
 
@@ -70,9 +113,24 @@ export const Login = () => {
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md z-10 px-4 sm:px-0">
         <div className="bg-slate-900 border border-slate-800 py-8 px-6 shadow-2xl rounded-2xl sm:px-10">
           {error && (
-            <div className="mb-6 p-3.5 rounded-xl bg-red-500/10 border border-red-500/20 flex items-start gap-3 text-red-400 text-sm">
-              <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-              <span>{error}</span>
+            <div className="mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm flex flex-col gap-3">
+              <div className="flex items-start gap-3">
+                <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-red-400" />
+                <div className="flex-1 leading-relaxed">{error}</div>
+              </div>
+              {email && password && (
+                <div className="flex justify-end pt-1 border-t border-red-500/20">
+                  <button
+                    type="button"
+                    onClick={() => handleSubmit()}
+                    disabled={isLoading}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-300 hover:text-white text-xs font-semibold transition-colors disabled:opacity-50"
+                  >
+                    <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin' : ''}`} />
+                    <span>Retry Login</span>
+                  </button>
+                </div>
+              )}
             </div>
           )}
 
@@ -133,7 +191,10 @@ export const Login = () => {
               className="w-full flex items-center justify-center gap-2 py-3 px-4 border border-transparent rounded-xl shadow-lg shadow-blue-500/20 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
             >
               {isLoading ? (
-                <div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
+                  <span>{statusMessage || 'Signing in...'}</span>
+                </div>
               ) : (
                 <>
                   <span>Sign in</span>
@@ -141,6 +202,13 @@ export const Login = () => {
                 </>
               )}
             </button>
+
+            {isLoading && statusMessage && (
+              <p className="text-center text-xs text-amber-400/90 animate-pulse flex items-center justify-center gap-1.5 pt-1">
+                <Server className="w-3.5 h-3.5 flex-shrink-0" />
+                <span>Render cloud server may take up to 45s on first wake-up. Please wait...</span>
+              </p>
+            )}
 
             <div className="pt-2 text-center">
               <p className="text-xs text-slate-400">

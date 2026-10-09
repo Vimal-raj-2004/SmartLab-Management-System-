@@ -35,8 +35,11 @@ export const AuthProvider = ({ children }) => {
           setUser(profile);
           localStorage.setItem('user', JSON.stringify(profile));
         } catch (err) {
-          console.error('Session expired or invalid:', err);
-          logout();
+          console.error('Session check error:', err);
+          // Only clear session if token is truly rejected by backend with 401
+          if (err.response?.status === 401) {
+            logout();
+          }
         }
       }
       setLoading(false);

@@ -1,8 +1,19 @@
 import axios from 'axios';
 
+const isLocalhost =
+  typeof window !== 'undefined' &&
+  (window.location.hostname === 'localhost' ||
+   window.location.hostname === '127.0.0.1');
+
+export const API_BASE_URL =
+  import.meta.env.VITE_API_URL ||
+  (isLocalhost
+    ? '/api'
+    : 'https://smartlab-management-system.onrender.com/api');
+
 const api = axios.create({
-  baseURL: '/api',
-  timeout: 15000,
+  baseURL: API_BASE_URL,
+  timeout: 60000,
 });
 
 // Attach JWT token to every request
@@ -33,6 +44,11 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+// ─── Health / Ping ─────────────────────────────────────────────────────────
+export const healthService = {
+  check: () => api.get('/health').then((res) => res.data),
+};
 
 // ─── Auth ──────────────────────────────────────────────────────────────────
 export const authService = {
