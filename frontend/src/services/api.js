@@ -5,11 +5,20 @@ const isLocalhost =
   (window.location.hostname === 'localhost' ||
    window.location.hostname === '127.0.0.1');
 
-export const API_BASE_URL =
-  import.meta.env.VITE_API_URL ||
-  (isLocalhost
-    ? '/api'
-    : 'https://smartlab-management-system.onrender.com/api');
+const resolveApiBaseUrl = () => {
+  if (isLocalhost) {
+    return '/api';
+  }
+  let base = import.meta.env.VITE_API_URL || 'https://smartlab-management-system.onrender.com/api';
+  base = String(base).trim().replace(/\/+$/, '');
+  // Ensure the /api prefix is present even if VITE_API_URL was set without /api on Netlify
+  if (!base.endsWith('/api')) {
+    base = `${base}/api`;
+  }
+  return base;
+};
+
+export const API_BASE_URL = resolveApiBaseUrl();
 
 const api = axios.create({
   baseURL: API_BASE_URL,
