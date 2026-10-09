@@ -20,6 +20,7 @@ def seed_database():
             {"name": "Dr. Priya Sharma", "email": "faculty@lab.edu", "password": "faculty123", "role": UserRole.FACULTY},
             {"name": "Ravi Kumar", "email": "assistant@lab.edu", "password": "assistant123", "role": UserRole.LAB_ASSISTANT},
             {"name": "Anjali Singh", "email": "student@lab.edu", "password": "student123", "role": UserRole.STUDENT},
+            {"name": "Tech Support Sam", "email": "support@lab.edu", "password": "assistant123", "role": UserRole.LAB_ASSISTANT},
         ]
         for u in seed_users:
             if not db.query(User).filter(User.email == u["email"]).first():
